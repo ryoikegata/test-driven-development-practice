@@ -1,0 +1,9 @@
+services:
+  php:
+    build: ./
+    container_name: phpunit
+    tty: true
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
