@@ -4,6 +4,8 @@ namespace App;
 
 class Dollar
 {
+  public $amount;
+
   public function __construct(int $amount)
   {}
 
