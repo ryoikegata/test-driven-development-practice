@@ -2,11 +2,11 @@
 
 class Dollar
 {
-  public $amount;
+  public int $amount;
 
   public function __construct(int $amount)
   {}
 
-  public function times(int $multiplier)
+  public function times(int $multiplier): void
   {}
 }
