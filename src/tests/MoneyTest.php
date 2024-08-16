@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Phpunit;
-
 use PHPUnit\Framework\TestCase;
-use App\Dollar;
+
+require_once __DIR__ . '/../../src/Dollar.php';
 
 class MoneyTest extends TestCase
 {
