@@ -1,43 +1,38 @@
 <?php
 
-class Dollar
-{
-  private int $amount;
-
-  public function __construct(int $amount)
-  {
-    $this->amount = $amount;
-  }
-
-  public function times(int $multiplier): Dollar
-  {
-    return new Dollar($this->amount * $multiplier);
-  }
+class Money {
+  protected $amount;
 
   public function equals(object $object)
   {
-    $dollar = $object;
-    return $this->amount === $dollar->amount;
+    $money = $object;
+    return $this->amount === $money->amount;
   }
 }
 
-class Franc
+class Dollar extends Money
 {
-  private int $amount;
 
   public function __construct(int $amount)
   {
     $this->amount = $amount;
   }
 
-  public function times(int $multiplier): Franc
+  public function times(int $multiplier): Money
   {
-    return new Franc($this->amount * $multiplier);
+    return new Dollar($this->amount * $multiplier);
+  }
+}
+class Franc extends Money
+{
+
+  public function __construct(int $amount)
+  {
+    $this->amount = $amount;
   }
 
-  public function equals(object $object)
+  public function times(int $multiplier): Money
   {
-    $dollar = $object;
-    return $this->amount === $dollar->amount;
+    return new Franc($this->amount * $multiplier);
   }
 }
