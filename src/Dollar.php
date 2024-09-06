@@ -2,7 +2,19 @@
 
 abstract class Money {
   protected $amount;
+  protected $currency;
   abstract public function times(int $multiplier): Money;
+
+  public function money(int $amount, string $currency)
+  {
+    $this->amount = $amount;
+    $this->currency = $currency;
+  }
+
+  public function currency(): string
+  {
+    return $this->currency;
+  }
 
   public function equals(object $object)
   {
@@ -12,37 +24,36 @@ abstract class Money {
 
   public static function dollar(int $amount): Money
   {
-    return new Dollar($amount);
+    return new Dollar($amount, 'USD');
   }
 
   public static function franc(int $amount): Money
   {
-    return new Franc($amount);
+    return new Franc($amount, 'CHF');
   }
 }
 
 class Dollar extends Money
 {
-
-  public function __construct(int $amount)
+  public function __construct(int $amount, string $currency)
   {
-    $this->amount = $amount;
+    parent::money($amount, $currency);
   }
+
   public function times(int $multiplier): Money
   {
-    return new Dollar($this->amount * $multiplier);
+    return Money::dollar($this->amount * $multiplier);
   }
 }
 class Franc extends Money
 {
-
-  public function __construct(int $amount)
+  public function __construct(int $amount, string $currency)
   {
-    $this->amount = $amount;
+    parent::money($amount, $currency);
   }
 
   public function times(int $multiplier): Money
   {
-    return new Franc($this->amount * $multiplier);
+    return Money::franc($this->amount * $multiplier);
   }
 }
