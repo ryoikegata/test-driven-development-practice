@@ -43,28 +43,3 @@ class Money {
     return new Money($this->amount * $multiplier, $this->currency);
   }
 }
-
-class Dollar extends Money
-{
-  public function __construct(int $amount, string $currency)
-  {
-    parent::money($amount, $currency);
-  }
-
-  public function times(int $multiplier): Money
-  {
-    return new Money($this->amount * $multiplier, $this->currency);
-  }
-}
-class Franc extends Money
-{
-  public function __construct(int $amount, string $currency)
-  {
-    parent::money($amount, $currency);
-  }
-
-  public function times(int $multiplier): Money
-  {
-    return new Money($this->amount * $multiplier, $this->currency);
-  }
-}
