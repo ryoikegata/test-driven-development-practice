@@ -1,6 +1,7 @@
 <?php
 
-class Money {
+require_once __DIR__ . '/Expression.php';
+class Money implements Expression {
   protected $amount;
   protected $currency;
 
@@ -41,5 +42,10 @@ class Money {
   public function times(int $multiplier): Money
   {
     return new Money($this->amount * $multiplier, $this->currency);
+  }
+
+  public function plus(Money $addend): Expression
+  {
+    return new Money($this->amount + $addend->amount, $this->currency);
   }
 }
